@@ -1,6 +1,18 @@
 extends layout
 
 block content
-  h1 Who's coffee?
-  h1 It's Matt's turn!
-  h2 #{last.who} last bought coffe on #{last.when}
+
+	.row
+		.col-sm-2.col-md-3
+		.col-sm-8.col-md-6.col-lg-4.coffee
+			h1 
+				img(src=gravatar)
+				span It's #{next.name}'s Turn!
+			h3 #{last.who} last bought coffe #{last_date}			
+			form(method='post')
+				input(type='hidden',name='turn',id='turn',value='#{next.name}')
+				button(type="submit",class="btn btn-block btn-primary btn-lg").
+					#{next.name} just bought the coffee!
+		.col-sm-2.col-md-3.col-lg-4
+	.actions
+

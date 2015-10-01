@@ -9,18 +9,6 @@ var debug = require('debug')('whoscoffee:server');
 var http = require('http');
 
 
-// Somewhere to persist the data...
-var Datastore = require('nedb'),
-    db = new Datastore({ filename: 'datafile', autoload: true });
-
-
-db.find({}, function (err, docs) {
-  if (docs.length == 0) {
-    console.log('No existing documents in the database...');
-    var coffee = {who:'Si', when:new Date(2015,8,24)};
-    db.insert(coffee);
-  }
-});
 
 
 
