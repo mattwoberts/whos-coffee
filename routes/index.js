@@ -20,11 +20,17 @@ router.get('/', function(req, res, next) {
 
     // Now find who's next up:
 
+    console.log('looking for the player..');
+
     playersdb.find({name: {$ne:last.who}}).exec(function(err,docs) {
       var next = docs[0];
 
+      console.log('found a player..',next);
+
       var emailHash = crypto.createHash('md5').update(next.email).digest('hex');
       var gravatar = 'http://www.gravatar.com/avatar/' + emailHash;
+
+      console.log('rendering the view...');
 
       res.render('index',
         {
